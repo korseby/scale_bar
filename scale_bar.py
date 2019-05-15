@@ -9,7 +9,7 @@ from PIL import Image, ImageFont, ImageDraw
 
 # Parse arguments
 parser = argparse.ArgumentParser(description='Draw a scale bar on microscopic images.')
-parser.add_argument('-v', '--version', action='version', version='Scale Bar Version 0.1',
+parser.add_argument('-v', '--version', action='version', version='Scale Bar Version 0.2',
                    help='show version')
 parser.add_argument('-c', '--csv', metavar='distances.csv', dest="input_csv", required=True,
                    help='read input scale bar distances csv')
@@ -47,7 +47,7 @@ output_image = args.output_image
 jpeg_quality = args.jpeg_quality
 
 # Scale multiplier
-scale_multiplier = args.scale_multiplier
+scale_multiplier = float(args.scale_multiplier)
 
 # Scale type
 scale_type = args.scale_type
@@ -66,7 +66,7 @@ scales.columns = scales.columns.str.replace(' ', '')
 
 # Select one entry from input CSV according to filtering criteria
 entry = scales[ scales.Camera.str.contains(filter_camera) &
-                scales.Microscope.str.contains(filter_microscope) &
+#                scales.Microscope.str.contains(filter_microscope) &
                 scales.ObjectiveLens.str.contains(filter_objective) &
                 scales.Magnification.str.contains(filter_magnification) ]
 
@@ -89,7 +89,12 @@ width, height = img.size
 scale_pixel = (height / entry.ImageHeight) * (entry.PixelDistance / entry.Scale)
 
 # Width of scale bar
-scale_width = round(scale_pixel * entry.Scale, 0)
+if (scale_multiplier == 0):
+	scale_width = round(scale_pixel * entry.Scale * (entry.ImageHeight / height), 0)
+elif (scale_multiplier == 1):
+	scale_width = round(scale_pixel * entry.Scale, 0)
+else:
+	scale_width = round(scale_pixel * entry.Scale * scale_multiplier, 0)
 
 # Height of scale bar
 scale_height = round((height) / (entry.ImageHeight / 100), 0)
