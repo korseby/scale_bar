@@ -6,6 +6,8 @@ import argparse
 import pandas
 import glob
 from PIL import Image, ImageFont, ImageDraw
+import PIL
+PIL.Image.MAX_IMAGE_PIXELS = 933120000
 
 # Parse arguments
 parser = argparse.ArgumentParser(description='Draw a scale bar on microscopic images.')
