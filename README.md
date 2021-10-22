@@ -1,8 +1,9 @@
 # Scale Bar
-Draw a scale bar on microscopic images
+Draw a scale bar onto microscopic images.
 
 Version: 0.2
 
+[![DOI](https://zenodo.org/badge/186418736.svg)](https://zenodo.org/badge/latestdoi/186418736)
 
 
 ## TODO
