@@ -7,7 +7,10 @@ import pandas
 import glob
 from PIL import Image, ImageFont, ImageDraw
 import PIL
-PIL.Image.MAX_IMAGE_PIXELS = 933120000
+PIL.Image.MAX_IMAGE_PIXELS = 10737418240
+
+if sys.platform.lower() == "win32":
+	os.system('color')
 
 # Parse arguments
 parser = argparse.ArgumentParser(description='Draw a scale bar on microscopic images.')
@@ -73,10 +76,10 @@ entry = scales[ scales.Camera.str.contains(filter_camera) &
                 scales.Magnification.str.contains(filter_magnification) ]
 
 if (len(entry.index) <= 0):
-	print("Error! No matches from filtering criteria.")
+	print("\033[91m{}\033[00m" .format("Error! No matches from filtering criteria."), file=sys.stderr)
 	sys.exit(1)
 elif (len(entry.index) > 1):
-	print("Error! Multiple matches from filtering criteria.")
+	print("\033[91m{}\033[00m" .format("Error! Multiple matches from filtering criteria."), file=sys.stderr)
 	sys.exit(2)
 
 # Input image
