@@ -1,7 +1,7 @@
 # Scale Bar
 Draw a scale bar onto microscopic images.
 
-Version: 0.2
+Version: 0.3
 
 [![DOI](https://zenodo.org/badge/186418736.svg)](https://zenodo.org/badge/latestdoi/186418736)
 
@@ -15,6 +15,9 @@ Version: 0.2
 
 
 ## Changes
+
+### Version 0.3:
+- added scales for Canon EOS R6 Mark II
 
 ### Version 0.2:
 - added scale magnifier properly

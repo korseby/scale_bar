@@ -28,8 +28,8 @@ parser.add_argument('-s', '--scale', metavar='0.85', dest="scale_multiplier", de
                    help='scale multiplier in the range [0.1-1] when the height of the source image has been cropped, or [0] when the scale multiplier is calculated from the height of the source image')
 parser.add_argument('-t', '--type', metavar='1', dest="scale_type", default=1, type=int, required=False,
                    help='type of the scale bar [1: Moose-CH, 2:Korseby]')
-parser.add_argument('-fc', '--filter-camera', metavar='\"Canon EOS RP\"', dest="filter_camera", default="Canon EOS RP", required=False,
-                   help='Filtering criterium for the camera, e.g. \ "Canon EOS RP\"')
+parser.add_argument('-fc', '--filter-camera', metavar='\"Canon EOS R6 Mark II\"', dest="filter_camera", default="Canon EOS R6 Mark II", required=False,
+                   help='Filtering criterium for the camera, e.g. \ "Canon EOS R6 Mark II\"')
 parser.add_argument('-fms', '--filter-microscope', metavar='\"Zeiss Axio Scope A1\"', dest="filter_microscope", default="Zeiss Axio Scope A1", required=False,
                    help='Filtering criterium for the microscope, e.g. \ "Zeiss Axio Scope A1\"')
 parser.add_argument('-fo', '--filter-objective', metavar='\"Apochromat 20x\"', dest="filter_objective", default="", required=False,
