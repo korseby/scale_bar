@@ -14,7 +14,7 @@ if sys.platform.lower() == "win32":
 
 # Parse arguments
 parser = argparse.ArgumentParser(description='Draw a scale bar on microscopic images.')
-parser.add_argument('-v', '--version', action='version', version='Scale Bar Version 0.2',
+parser.add_argument('-v', '--version', action='version', version='Scale Bar Version 0.3',
                    help='show version')
 parser.add_argument('-c', '--csv', metavar='distances.csv', dest="input_csv", required=True,
                    help='read input scale bar distances csv')
@@ -75,13 +75,6 @@ entry = scales[ scales.Camera.str.contains(filter_camera) &
                 scales.ObjectiveLens.str.contains(filter_objective) &
                 scales.Magnification.str.contains(filter_magnification) ]
 
-if (len(entry.index) <= 0):
-	print("\033[91m{}\033[00m" .format("Error! No matches from filtering criteria."), file=sys.stderr)
-	sys.exit(1)
-elif (len(entry.index) > 1):
-	print("\033[91m{}\033[00m" .format("Error! Multiple matches from filtering criteria."), file=sys.stderr)
-	sys.exit(2)
-
 # Input image
 img = Image.open(input_image).convert("RGB")
 exif = img.info['exif']
@@ -89,6 +82,16 @@ icc_profile = img.info.get('icc_profile')
 
 # Read width and height from image
 width, height = img.size
+
+# Make sanity checks
+if (len(entry.index) <= 0):
+	print("\033[91m{}\033[00m" .format("Warning! No matches from filtering criteria. Writing image without scale."), file=sys.stderr)
+	img.save(output_image, format='JPEG', quality=jpeg_quality, optimize=True, progressive=True, exif=exif, icc_profile=icc_profile)
+	sys.exit(1)
+elif (len(entry.index) > 1):
+	print("\033[91m{}\033[00m" .format("Warning! Multiple matches from filtering criteria. Writing image without scale."), file=sys.stderr)
+	img.save(output_image, format='JPEG', quality=jpeg_quality, optimize=True, progressive=True, exif=exif, icc_profile=icc_profile)
+	sys.exit(2)
 
 # Scale of one pixel
 scale_pixel = (height / entry.ImageHeight) * (entry.PixelDistance / entry.Scale)
@@ -109,25 +112,28 @@ scale_label = (' ' + entry.Scale.to_string(index=False) + ' ' + entry.Unit.to_st
 
 # Define font
 if (scale_type == 1):
-	scale_font_size = int(round(scale_height * 1.8, 0))
+	scale_font_size = int(round(scale_height.iloc[0] * 1.5, 0))
 	scale_font = ImageFont.truetype("Arial Bold", scale_font_size)
-	scale_label_width, scale_label_height = scale_font.getsize(scale_label)
+	scale_label_size = scale_font.getbbox(scale_label)
+	scale_label_width = scale_label_size[2] - scale_label_size[0]
+	scale_label_height = scale_label_size[3] - scale_label_size[1]
 else:
 	scale_height = round(scale_height / 6, 0)
 	scale_font_size = int(round(height / 25, 0))
 	scale_font = ImageFont.truetype("Arial Bold", scale_font_size)
-	scale_label_width, scale_label_height = scale_font.getsize(scale_label)
+	scale_label_width = scale_label_size[2] - scale_label_size[0]
+	scale_label_height = scale_label_size[3] - scale_label_size[1]
 
 # Coordinates of scale bar
 if (scale_type == 1):
 	scale_bar_x1 = (width - scale_width - scale_label_width)
-	scale_bar_y1 = height - scale_height - scale_font.getsize('    ')[0]
+	scale_bar_y1 = height - scale_height - (scale_font.getbbox('    ')[2] - scale_font.getbbox('    ')[0])
 	scale_bar_x2 = scale_bar_x1 + scale_width
 	scale_bar_y2 = scale_bar_y1 + scale_height
 	scale_bar_y3 = scale_bar_y1 - ((scale_label_height - (scale_bar_y2 - scale_bar_y1)) / 2)
 else:
 	scale_bar_x1 = (width - scale_width) - round(width / 33, 0)
-	scale_bar_y1 = height - scale_height - round(height / 33, 0) - scale_font.getsize('    ')[0]
+	scale_bar_y1 = height - scale_height - round(height / 33, 0) - (scale_font.getbbox('    ')[2] - scale_font.getbbox('    ')[0])
 	scale_bar_x2 = scale_bar_x1 + scale_width
 	scale_bar_y2 = scale_bar_y1 + scale_height
 	scale_bar_x4 = scale_bar_x1 + (scale_width / 2) - (scale_label_width / 2.5)
@@ -136,8 +142,8 @@ else:
 # Type 1: Draw box and label beside it
 if (scale_type == 1):
 	draw = ImageDraw.Draw(img)
-	draw.rectangle( ((scale_bar_x1, scale_bar_y1), (scale_bar_x2, scale_bar_y2)), fill="black")
-	draw.text((scale_bar_x2, scale_bar_y3), scale_label, font=scale_font, fill="black")
+	draw.rectangle( ((scale_bar_x1.iloc[0], scale_bar_y1.iloc[0]), (scale_bar_x2.iloc[0], scale_bar_y2.iloc[0])), fill="black")
+	draw.text((scale_bar_x2.iloc[0], (scale_bar_y3.iloc[0] - (scale_bar_y2.iloc[0] - scale_bar_y1.iloc[0]) / 8)), scale_label, font=scale_font, fill="black")
 else:
 	adj = round(height / 600, 1)
 	draw = ImageDraw.Draw(img)
@@ -157,4 +163,4 @@ else:
 # Save output image
 img.save(output_image, format='JPEG', quality=jpeg_quality, optimize=True, progressive=True, exif=exif, icc_profile=icc_profile)
 
-print("Done.")
+#print("Done.")
