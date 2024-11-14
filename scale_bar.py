@@ -64,7 +64,7 @@ filter_objective = args.filter_objective
 filter_magnification = args.filter_magnification
 
 # Read input CSV with scale bar distances
-scales = pandas.read_csv(input_csv, delimiter=';')
+scales = pandas.read_csv(input_csv, delimiter=',')
 
 # Remove whitespace in column names
 scales.columns = scales.columns.str.replace(' ', '')
