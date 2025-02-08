@@ -34,12 +34,14 @@ Canon EOS RP,Novoflex Extension Bellow,Laowa 25mm f/2.8,5x,6240,4160,743,500,µm
 Canon EOS RP,Novoflex Extension Bellow,Laowa 25mm f/2.8,6x,6240,4160,778,500,µm
 Canon EOS RP,Novoflex Extension Bellow,Laowa 25mm f/2.8,7x,6240,4160,815,500,µm
 Canon EOS RP,Novoflex Extension Bellow,Laowa 25mm f/2.8,8x,6240,4160,851,500,µm
+Canon EOS R6 Mark II,Zeiss Axio Scope A1,Neofluar 1.25x,1.25x,6000,4000,537,1000,µm
 Canon EOS R6 Mark II,Zeiss Axio Scope A1,Neofluar 2.5x,2.5x,6000,4000,1075,1000,µm
 Canon EOS R6 Mark II,Zeiss Axio Scope A1,Apochromat 5x,5x,6000,4000,1040,500,µm
 Canon EOS R6 Mark II,Zeiss Axio Scope A1,Apochromat 10x,10x,6000,4000,836,200,µm
 Canon EOS R6 Mark II,Zeiss Axio Scope A1,Apochromat 20x,20x,6000,4000,840,100,µm
 Canon EOS R6 Mark II,Zeiss Axio Scope A1,Apochromat 40x,40x,6000,4000,838,50,µm
-Canon EOS R6 Mark II,Zeiss Axio Scope A1,Neofluar 100x,100x,6000,4000,830,20,µm
+Canon EOS R6 Mark II,Zeiss Axio Scope A1,Achroplan 100x,100x,6000,4000,833,20,µm
+Canon EOS R6 Mark II,Zeiss Axio Scope A1,Neofluar 100x,100x,6000,4000,842,20,µm
 Canon EOS R6 Mark II,Zeiss Stemi 2000-C,Zeiss Stemi 2000-C,0.65x,6000,4000,1068,4,mm
 Canon EOS R6 Mark II,Zeiss Stemi 2000-C,Zeiss Stemi 2000-C,0.80x,6000,4000,656,2,mm
 Canon EOS R6 Mark II,Zeiss Stemi 2000-C,Zeiss Stemi 2000-C,1.00x,6000,4000,830,2,mm
@@ -77,6 +79,18 @@ Canon EOS R6 Mark II,Novoflex Extension Bellow,Laowa 25mm f/2.8,5x,6000,4000,717
 Canon EOS R6 Mark II,Novoflex Extension Bellow,Laowa 25mm f/2.8,6x,6000,4000,750,500,µm
 Canon EOS R6 Mark II,Novoflex Extension Bellow,Laowa 25mm f/2.8,7x,6000,4000,782,500,µm
 Canon EOS R6 Mark II,Novoflex Extension Bellow,Laowa 25mm f/2.8,8x,6000,4000,833,500,µm
+Canon EOS R6 Mark II,Mitutoyo,Mitutoyo HR 5.0x,5.0x,6000,4000,892,1000,µm
+Canon EOS R6 Mark II,Mitutoyo,Mitutoyo 7.5x,7.5x,6000,4000,673,500,µm
+Canon EOS R6 Mark II,Mitutoyo,Mitutoyo HR 10x,10.0x,6000,4000,444,250,µm
+Canon EOS R6 Mark II,Mitutoyo,Mitutoyo 20x,20.0x,6000,4000,708,200,µm
+Canon EOS R5,Zeiss Axio Scope A1,Neofluar 1.25x,1.25x,8192,5464,730,1000,µm
+Canon EOS R5,Zeiss Axio Scope A1,Neofluar 2.5x,2.5x,8192,5464,737,500,µm
+Canon EOS R5,Zeiss Axio Scope A1,Apochromat 5x,5x,8192,5464,1138,500,µm
+Canon EOS R5,Zeiss Axio Scope A1,Apochromat 10x,10x,8192,5464,1144,200,µm
+Canon EOS R5,Zeiss Axio Scope A1,Apochromat 20x,20x,8192,5464,1147,100,µm
+Canon EOS R5,Zeiss Axio Scope A1,Apochromat 40x,40x,8192,5464,1131,50,µm
+Canon EOS R5,Zeiss Axio Scope A1,Achroplan 100x,100x,8192,5464,1133,20,µm
+Canon EOS R5,Zeiss Axio Scope A1,Neofluar 100x,100x,8192,5464,1143,20,µm
 Canon EOS R5,Laowa,Laowa 25mm f/2.8,2.5x,8192,5464,1188,2,mm
 Canon EOS R5,Laowa,Laowa 25mm f/2.8,3.0x,8192,5464,674,1000,µm
 Canon EOS R5,Laowa,Laowa 25mm f/2.8,3.5x,8192,5464,783,1000,µm
@@ -90,5 +104,5 @@ Canon EOS R5,Laowa,Laowa 85mm f/5.6,1.5x,8192,5464,633,2,mm
 Canon EOS R5,Laowa,Laowa 85mm f/5.6,2.0x,8192,5464,889,2,mm
 Canon EOS R5,Mitutoyo,Mitutoyo HR 5.0x,5.0x,8192,5464,1218,1000,µm
 Canon EOS R5,Mitutoyo,Mitutoyo 7.5x,7.5x,8192,5464,919,500,µm
-Canon EOS R6 Mark II,Mitutoyo,Mitutoyo HR 5.0x,5.0x,6000,4000,892,1000,µm
-Canon EOS R6 Mark II,Mitutoyo,Mitutoyo 7.5x,7.5x,6000,4000,673,500,µm
+Canon EOS R5,Mitutoyo,Mitutoyo HR 10x,10.0x,8192,5464,606,250,µm
+Canon EOS R5,Mitutoyo,Mitutoyo 20x,20.0x,8192,5464,967,200,µm
